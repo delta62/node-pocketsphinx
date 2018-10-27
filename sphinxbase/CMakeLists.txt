@@ -2,7 +2,7 @@ project(SphinxBase)
 
 execute_process(COMMAND pkg-config --variable datadir sphinxbase OUTPUT_VARIABLE SB_DATADIR OUTPUT_STRIP_TRAILING_WHITESPACE)
 add_custom_command(OUTPUT "sb.cpp"
-                   COMMAND swig -I${SB_DATADIR}/swig -javascript -node -DV8_VERSION=0x032872 -o sb.cpp ${SB_DATADIR}/swig/sphinxbase.i
+                   COMMAND swig -c++ -I${SB_DATADIR}/swig -javascript -node -DV8_VERSION=0x032872 -o sb.cpp ${SB_DATADIR}/swig/sphinxbase.i
                    COMMENT "Generating swig bindings" )
 
 link_directories(${PROJECT_NAME} ${SB_LIBRARY_DIRS})
